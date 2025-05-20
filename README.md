@@ -42,7 +42,7 @@ jobs:
         with:
           project-path: "./Web/Web.csproj"
           output-formats: "json,html,sarif,msbuild"
-          output-path: "./results/puma-scan"
+          output-file: "./results/puma-scan"
           settings-paths: "./.pumafile"
 ```
 
