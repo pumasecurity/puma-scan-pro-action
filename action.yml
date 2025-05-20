@@ -1,5 +1,5 @@
 name: "Puma Scan Professional"
-description: "Performs secure code analysis for C# applications. Includes the ability to export scan results and stop the build pipeline if high risk are identified."
+description: "Secure code analysis rules for .NET C# applications."
 author: "Puma Security"
 
 inputs:
