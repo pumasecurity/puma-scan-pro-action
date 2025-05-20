@@ -1,0 +1,50 @@
+name: "Puma Scan Professional"
+description: "Performs secure code analysis for C# applications. Includes the ability to export scan results and stop the build pipeline if high risk are identified."
+author: "Puma Security"
+
+inputs:
+  project-path:
+    description: "Required: Common delimited list of solutions or projects to analyze [Web.csproj,Api.csproj,Data.csproj]"
+    required: true
+    default: ""
+  output-formats:
+    description: "Required: Comma delimited list of output formats [json,html,msbuild,vso,trx,csv,sarif,sonarcloud]"
+    required: true
+    default: "json"
+  output-file:
+    description: "Required: Output directory and file name for the generated scan results [./tests/pumascan]. The file extension will automatically be added for each selected format."
+    required: true
+    default: "./tests/pumascan"
+  settings-paths:
+    description: "Optional: Comma delimited list of Puma Scan custom scan settings file paths (.pumafile). If no value is supplied, the default scanner settings will be used."
+    required: false
+    default: "null"
+  verbose:
+    description: "Optional: Writes verbose output to the console. Default is false."
+    required: false
+    default: "false"
+  threshold-high:
+    description: "Optional: Threshold for the number of high risk findings that cause the scan to return a failing exit code. Default is disabled."
+    required: false
+    default: "null"
+  threshold-medium:
+    description: "Optional: Threshold for the number of medium risk findings that cause the scan to return a failing exit code. Default is disabled."
+    required: false
+    default: "null"
+  threshold-low:
+    description: "Optional: Threshold for the number of low risk findings that cause the scan to return a failing exit code. Default is disabled."
+    required: false
+    default: "null"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.project-path }}
+    - ${{ inputs.output-formats }}
+    - ${{ inputs.output-file }}
+    - ${{ inputs.settings-paths }}
+    - ${{ inputs.verbose }}
+    - ${{ inputs.threshold-high }}
+    - ${{ inputs.threshold-medium }}
+    - ${{ inputs.threshold-low }}
