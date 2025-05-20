@@ -40,7 +40,7 @@ jobs:
         env:
           PUMA_LICENSE: ${{ secrets.PUMA_LICENSE }}
         with:
-          project-path: "./Web/Web.csproj"
+          project-paths: "./Web/Web.csproj"
           output-formats: "json,html,sarif,msbuild"
           output-file: "./results/puma-scan"
           settings-paths: "./.pumafile"
@@ -57,7 +57,7 @@ Following input parameters can be used to pass arguments to the *pumascan* comma
 | Name               | Required    | Description                        |  
 |--------------------|-------------|------------------------------------|
 | `version`          | false | The version of PumaScan Professional to use. Default is the latest version on Linux x64 processors. |
-| `project-path`     | true  | Common delimited list of solutions or projects to analyze [Web.csproj,Api.csproj,Data.csproj] |
+| `project-paths`     | true  | Common delimited list of solutions or projects to analyze [Web.csproj,Api.csproj,Data.csproj] |
 | `output-formats`   | true  | Comma delimited list of output formats [json,html,msbuild,vso,trx,csv,sarif,sonarcloud] |
 | `output-file`      | true  | Output directory and file name for the generated scan results [./results/pumascan]. The file extension will automatically be added for each selected format. |
 | `settings-paths`    | false | Comma delimited list of settings file paths. The default is the *.pumafile* in the current working directory. |

@@ -3,7 +3,7 @@ description: "Performs secure code analysis for C# applications. Includes the ab
 author: "Puma Security"
 
 inputs:
-  project-path:
+  project-paths:
     description: "Required: Common delimited list of solutions or projects to analyze [Web.csproj,Api.csproj,Data.csproj]"
     required: true
     default: ""
@@ -40,7 +40,7 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.project-path }}
+    - ${{ inputs.project-paths }}
     - ${{ inputs.output-formats }}
     - ${{ inputs.output-file }}
     - ${{ inputs.settings-paths }}
