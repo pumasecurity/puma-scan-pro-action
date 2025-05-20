@@ -4,10 +4,6 @@
 
 > [GitHub Action](https://github.com/features/actions) for [Puma Scan Professional](https://github.com/pumasecurity/puma-scan-pro-action)
 
-[![GitHub Release][release-img]][release]
-[![GitHub Marketplace][marketplace-img]][marketplace]
-[![License][license-img]][license]
-
 ## Table of Contents
 
 * [Usage](#usage)
