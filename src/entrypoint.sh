@@ -24,7 +24,7 @@ for f in ${PUMA_PROJECT_PATHS//,/ }; do
 done
 
 # Request GH action token for license activation
-export PUMA_AUTH_TOKEN=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://portal.pumascan.com" | jq -r '.value')
+export PUMA_AUTH_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://portal.pumascan.com" | jq -r '.value')
 
 # Build args and run pumascan
 pumascan_command=("pumascan" "scan" "--projects" """${PUMA_PROJECT_PATHS}""" "--format" """${PUMA_OUTPUT_FORMATS}""" "--output" """${PUMA_OUTPUT_FILE}""")
