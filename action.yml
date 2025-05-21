@@ -1,6 +1,9 @@
 name: "Puma Scan Professional"
 description: "Secure code analysis rules for .NET C# applications."
 author: "Puma Security"
+branding:
+  icon: "terminal"
+  color: "yellow"
 
 inputs:
   project-paths:
