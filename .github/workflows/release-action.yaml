@@ -7,7 +7,7 @@ on:
         description: "Puma Scan Pro release build ID (e.g., #.#.#.##)"
         required: true
         type: string
-      image-tag:
+      image_tag:
         description: "Puma Scan Pro container image tag (e.g., #.#.#-net10-linux-x64)"
         required: true
         type: string
@@ -35,13 +35,13 @@ jobs:
 
       - name: Update Dockerfile container image
         env:
-          IMAGE_TAG: ${{ inputs['image-tag'] }}
+          IMAGE_TAG: ${{ inputs.image_tag }}
         run: ./build/update-container-image.sh "${IMAGE_TAG}"
 
       - name: commit version
         env:
-          PUMA_BUILD_ID: ${{ inputs['build_id'] }}
-          IMAGE_TAG: ${{ inputs['image-tag'] }}
+          PUMA_BUILD_ID: ${{ inputs.build_id }}
+          IMAGE_TAG: ${{ inputs.image_tag }}
           APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
         run: |
           git config --local user.email "${APP_SLUG}@pumasecurity.io"
@@ -58,7 +58,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           BUILD_ID: ${{ inputs.build_id }}
-          IMAGE_TAG: ${{ inputs['image-tag'] }}
+          IMAGE_TAG: ${{ inputs.image_tag }}
         run: |
           GENERATED_NOTES=$(gh api \
             --method POST \
