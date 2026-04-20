@@ -68,6 +68,6 @@ jobs:
 
           gh release create "v${BUILD_ID}" \
             --title "v${BUILD_ID}" \
-            --notes "Puma scan container id: ${IMAGE_TAG}
+            --notes "Puma scan image tag: ${IMAGE_TAG}
 
           ${GENERATED_NOTES}"

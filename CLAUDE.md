@@ -11,7 +11,7 @@ A Docker-based GitHub Action that wraps the `pumascan` CLI (Puma Scan Profession
 Three files drive the entire action; changes almost always touch one or more of them together:
 
 - `action.yml` — declares inputs and wires them as **positional** args (`$1..$8`) into the container entrypoint. Input order here MUST match the `READ INPUT VARS` block in `src/entrypoint.sh`. Adding/removing/reordering an input requires updating both files and the README input table.
-- `Dockerfile` — `FROM ghcr.io/pumasecurity/puma-scan-pro:<version>-net8-linux-x64`. The base image ships the `pumascan` binary and .NET runtime; this repo only adds `jq` and the entrypoint script. Bumping Puma Scan Pro = bumping this tag.
+- `Dockerfile` — `FROM ghcr.io/pumasecurity/puma-scan-pro:<version>-net10-linux-x64`. The base image ships the `pumascan` binary and .NET runtime; this repo only adds `jq` and the entrypoint script. Bumping Puma Scan Pro = bumping this tag.
 - `src/entrypoint.sh` — runs inside the container at action execution. Sequence: (1) `dotnet restore` each project in `PUMA_PROJECT_PATHS`, (2) exchange `ACTIONS_ID_TOKEN_REQUEST_TOKEN` for a `PUMA_AUTH_TOKEN` via the GitHub OIDC endpoint with audience `https://portal.pumascan.com`, (3) build and exec `pumascan scan` with optional flags.
 
 ### Non-obvious behaviors
